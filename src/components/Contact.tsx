@@ -15,7 +15,14 @@ const Contact = () => {
               </a>
             </p>
             <h4>Certifications</h4>
-            <p>CEH · CompTIA Security+ · OSCP · eJPT</p>
+            <a
+              href="https://learn.nvidia.com/certificates?id=QYAVPMZTShG4rN4R9xHwfg"
+              target="_blank"
+              data-cursor="disable"
+              className="contact-social"
+            >
+              NVIDIA – Generative AI Explained <MdArrowOutward />
+            </a>
           </div>
           <div className="contact-box">
             <h4>Social</h4>
