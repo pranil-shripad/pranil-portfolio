@@ -1,38 +1,36 @@
-# Pranil Portfolio
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-A modern personal portfolio built with React, TypeScript, and Vite, featuring an interactive 3D character scene powered by React Three Fiber.
+## Getting Started
 
-## Overview
+First, run the development server:
 
-This project is a single-page portfolio experience with animated sections and a responsive layout. It combines:
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-- UI and transitions built with React and GSAP
-- 3D rendering using Three.js via React Three Fiber ecosystem
-- Lazy-loaded components for better initial load performance
-- Desktop/mobile behavior differences for rendering the 3D character
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Tech Stack
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- React 18
-- TypeScript
-- Vite 5
-- Three.js + @react-three/fiber + @react-three/drei
-- GSAP (+ @gsap/react)
-- ESLint
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Features
+## Learn More
 
-- Interactive landing and portfolio sections
-- Custom cursor and navigation components
-- 3D character and environment integration
-- Responsive rendering strategy:
-  - Desktop: character renders alongside content
-  - Mobile/tablet: character is rendered inside landing flow
-- Section-based layout:
-  - Landing
-  - About
-  - What I Do
-  - Work
-  - Tech Stack (desktop)
-  - Contact
+To learn more about Next.js, take a look at the following resources:
 
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
