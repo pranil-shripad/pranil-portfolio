@@ -1,21 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "@/components/navbar";
+import { Sidebar } from "@/components/about";
 
-const inter = Inter({
+const dmSans = DM_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
   title: "Pranil Shripad — Full Stack Developer & Cybersecurity Engineer",
   description:
-    "Portfolio of Pranil Shripad — Full Stack Developer, Cybersecurity Engineer, Blockchain Developer, and AI Enthusiast. Explore projects, skills, and get in touch.",
+    "Portfolio of Pranil Shripad — Full Stack Developer, Cybersecurity Engineer, Blockchain Developer, and AI Enthusiast.",
   keywords: [
     "Pranil Shripad",
     "Full Stack Developer",
@@ -25,12 +23,6 @@ export const metadata: Metadata = {
     "Portfolio",
   ],
   authors: [{ name: "Pranil Shripad" }],
-  openGraph: {
-    title: "Pranil Shripad — Full Stack Developer & Cybersecurity Engineer",
-    description:
-      "Portfolio of Pranil Shripad — Full Stack Developer, Cybersecurity Engineer, Blockchain Developer, and AI Enthusiast.",
-    type: "website",
-  },
 };
 
 export default function RootLayout({
@@ -39,11 +31,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${dmSans.variable} h-full antialiased`}>
+      <body className="min-h-full bg-background text-foreground font-sans">
+        <Navbar />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex flex-col lg:flex-row gap-8">
+            <Sidebar />
+            <main className="flex-1 min-w-0">
+              {children}
+            </main>
+          </div>
+        </div>
+      </body>
     </html>
   );
 }

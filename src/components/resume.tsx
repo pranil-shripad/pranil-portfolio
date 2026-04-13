@@ -1,120 +1,98 @@
 "use client";
 
 import { BlurFade } from "@/components/ui/blur-fade";
-import { buttonVariants } from "@/components/ui/button";
-import { Download, GraduationCap, Briefcase, Award } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
-const highlights = [
+interface Experience {
+  company: string;
+  description: string;
+  period: string;
+  link?: string;
+}
+
+const experiences: Experience[] = [
   {
-    icon: GraduationCap,
-    title: "Education",
-    items: [
-      {
-        primary: "B.Tech in Computer Science",
-        secondary: "Specialization in Cybersecurity & AI",
-      },
-    ],
+    company: "Full Stack Development",
+    description:
+      "Building scalable web applications with React, Next.js, Node.js, and PostgreSQL. Focus on clean architecture and performance optimization.",
+    period: "2022 – Present",
   },
   {
-    icon: Briefcase,
-    title: "Experience",
-    items: [
-      {
-        primary: "Full Stack Development",
-        secondary: "Building scalable web applications with modern frameworks",
-      },
-      {
-        primary: "Security Research",
-        secondary:
-          "Vulnerability assessment, penetration testing & security audits",
-      },
-    ],
+    company: "Cybersecurity Research",
+    description:
+      "Conducting vulnerability assessments, penetration testing, and security audits. Active participant in CTF competitions and bug bounty programs.",
+    period: "2021 – Present",
   },
   {
-    icon: Award,
-    title: "Certifications & Achievements",
-    items: [
-      {
-        primary: "Blockchain Development",
-        secondary: "Smart contract development & DeFi protocol design",
-      },
-      {
-        primary: "CTF Competitions",
-        secondary: "Active participant in cybersecurity capture-the-flag events",
-      },
-    ],
+    company: "Blockchain Development",
+    description:
+      "Designing and deploying smart contracts on Ethereum and Polygon. Building DeFi protocols with Solidity, Hardhat, and Ethers.js.",
+    period: "2023 – Present",
+  },
+  {
+    company: "AI / Machine Learning",
+    description:
+      "Developing ML models for real-time threat detection and deepfake analysis using TensorFlow, PyTorch, and NLP techniques.",
+    period: "2024 – Present",
   },
 ];
 
 export function Resume() {
   return (
-    <section id="resume" className="py-24 sm:py-32 relative">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-      </div>
-
-      <div className="mx-auto max-w-6xl px-6 relative">
-        <BlurFade delay={0.1} inView>
-          <div className="flex items-center gap-4 mb-4">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-              My{" "}
-              <span className="bg-gradient-to-r from-violet-400 to-purple-600 bg-clip-text text-transparent">
-                Resume
-              </span>
-            </h2>
-            <div className="flex-1 h-px bg-gradient-to-r from-border to-transparent" />
-          </div>
-        </BlurFade>
-
-        <BlurFade delay={0.2} inView>
-          <p className="text-muted-foreground text-lg mb-12 max-w-2xl">
-            A summary of my education, experience, and achievements.
-            Download the full resume for more details.
-          </p>
-        </BlurFade>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {highlights.map((section, index) => (
-            <BlurFade key={section.title} delay={0.2 + index * 0.1} inView>
-              <div className="p-6 rounded-2xl border border-border/50 bg-card/30 backdrop-blur-sm h-full">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="p-2.5 rounded-xl bg-violet-soft">
-                    <section.icon className="size-5 text-violet-accent" />
-                  </div>
-                  <h3 className="text-base font-semibold text-foreground">
-                    {section.title}
-                  </h3>
-                </div>
-                <div className="space-y-4">
-                  {section.items.map((item) => (
-                    <div key={item.primary}>
-                      <p className="text-sm font-medium text-foreground">
-                        {item.primary}
-                      </p>
-                      <p className="text-sm text-muted-foreground mt-0.5">
-                        {item.secondary}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </BlurFade>
-          ))}
+    <section id="experience" className="py-8">
+      {/* Ghost heading */}
+      <BlurFade delay={0.1} inView>
+        <div className="ghost-heading mb-8">
+          <span className="solid">YEARS OF</span>
+          <br />
+          <span className="outline">EXPERIENCE</span>
         </div>
+      </BlurFade>
 
-        <BlurFade delay={0.6} inView>
-          <div className="text-center">
-            <a
-              href="/resume.pdf"
-              download
-              className={buttonVariants({ size: "lg" }) + " bg-violet-accent hover:bg-violet-glow text-white px-8 py-6 text-base rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/25"}
-            >
-              <Download className="mr-2 size-5" />
-              Download Full Resume
-            </a>
-          </div>
-        </BlurFade>
+      {/* Experience list */}
+      <div>
+        {experiences.map((exp, index) => (
+          <BlurFade key={exp.company} delay={0.15 + index * 0.08} inView>
+            <div className="experience-row group">
+              <div className="flex items-start justify-between gap-4">
+                <h3 className="text-lg sm:text-xl font-bold text-white">
+                  {exp.company}
+                </h3>
+                {exp.link && (
+                  <a
+                    href={exp.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent-orange flex-shrink-0"
+                  >
+                    <ArrowUpRight className="size-5" />
+                  </a>
+                )}
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed mt-2 max-w-2xl">
+                {exp.description}
+              </p>
+              <p className="text-sm text-muted-foreground/60 mt-3">
+                {exp.period}
+              </p>
+            </div>
+          </BlurFade>
+        ))}
       </div>
+
+      {/* Download resume link */}
+      <BlurFade delay={0.6} inView>
+        <div className="mt-8">
+          <a
+            href="/resume.pdf"
+            download
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent-orange text-white text-sm font-semibold hover:bg-accent-orange/90 transition-colors"
+          >
+            Download Resume
+            <ArrowUpRight className="size-4" />
+          </a>
+        </div>
+      </BlurFade>
     </section>
   );
 }
